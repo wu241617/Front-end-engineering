@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial=1.0,minmum-scale=1.0,maximum-scale=1.0,user-scalabel=no,view-port=cover">
+		<title>前端工程化</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			#app{
+				width:30rem;
+				min-height:20rem;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+				margin: 2.5rem auto;
+			}
+			h2{
+				height:3rem;
+				line-height:3rem;
+				background-color:black;
+				color:white;
+				text-align:center;
+				font-size:1.3rem;
+			}
+			ul{
+				list-style:none;
+				font-size:0.9rem;
+			}
+			ul li{
+				height:2rem;
+				line-height:2rem;
+				margin:0.5rem 0;
+				border-bottom:0.05rem solid black;
+				cursor:pointer;
+			}
+			ul li:hover{
+				height:2.5rem;
+				color:#f60;
+			}
+			span{
+				margin-left:2rem;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+				
+			}
+			@media (max-width:500px) {
+				html{
+					font-size=12px;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					border:none;
+					margin:0;
+				}
+				h2{
+					background:linear-gradient(red,#f60);
+					font-family:幼圆;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>最终学习目标:</h2>
+			<ul>
+				<li><span>能够知道哪些模块化的相关规范</span></li>
+				<li><span>能够使用webpack</span></li>
+				<li><span>能够使用Vue单文件组件</span></li>
+				<li><span>能够使用Vue脚手架</span></li>
+				<li><span>能够使用Element-UI</span></li>
+			</ul>
+		</div>
+		
+	</body>
+</html>
