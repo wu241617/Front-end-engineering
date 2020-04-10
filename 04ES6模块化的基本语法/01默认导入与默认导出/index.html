@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>ES6模块化的基本语法-默认导入与默认导出</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1rem;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				padding:2rem;
+				margin:2rem auto;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				font-size:1.2rem;
+				height:2.5rem;
+				line-height:2.5rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+				margin-bottom:2rem;
+			}
+			ul{
+				list-style-position:inside;
+			}
+			ul li:nth-child(3),ul li:nth-child(4){
+				margin:1rem 0;
+			}
+			pre{
+				color:red;
+				font-size:0.8rem;
+				font-weight:bold;
+				margin:1rem 0;
+			}
+			strong{
+				color:#f60;
+				margin-right:2rem;
+			}
+			br{
+				display:none;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+					border:0;
+				}
+				br{
+					display:block;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>ES6模块化的基本语法-默认导入与默认导出</h2>
+			<ul>
+				<li><strong>默认导出语法:</strong>export default 默认导出的成员
+			<pre>
+				//当前文件模块m1.js
+				//定义私有成员a和b
+				let a = 10;
+				let b = 20;
+				//外界访问不到c,因为它没有暴露出去
+				let c = 30;
+				function show(){}
+				//将本模块中的私有成员暴露出去,使其<br>它模块使用
+				export default{
+					a,
+					b,
+					show
+				}
+			</pre>	
+				</li>
+				<li><strong>默认导入语法:</strong>import 接收名称 from '模块标识符'
+			<pre>
+				//导入模块成员
+				import m1 from './m1.js'
+				console.log(m1);
+				//打印结果为:
+				//{a:10,b:20,show:[Function:show]}
+			</pre>	
+				</li>
+				<li>注意:每个模块中，只允许使用唯一的一次export default,否则报错</li>
+				<li>浏览器还没有完全支持ES6模块，所以需要在导入模块时，在script标签中加“type = module”</li>
+			</ul>
+		</div>
+		
+		<!-- 浏览器还没有完全支持ES6模块，所以需要在导入模块时，在script标签中加“type = module” -->
+		<script src="index.js" type="module"></script>
+	</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1,0,user-scalable=no,viewport-fit=cover">
+		<title>Node.js中通过babel体验ES6模块化</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:0.9rem;
+			}
+			#app{
+				width:40rem;
+				min-height:15rem;
+				margin:2rem auto;
+				padding:2rem;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				height:3rem;
+				line-height:3rem;
+				background-color:black;
+				color:white;
+				text-align:center;
+			}
+			ol{
+				list-style-position:inside;
+			}
+			ol li{
+			    height:auto;
+				margin:1rem 0;
+				border-bottom:0.05rem solid black;
+				cursor:pointer;
+			}
+			pre{
+				display:none;
+			}
+			ol li:hover{
+				color:red;
+			}
+			ol li:nth-child(4){
+				position:relative;
+			}
+			ol li:nth-child(4):hover pre{
+				display:block;
+			}
+			ol li:nth-child(4):hover{
+				height:15rem;
+			}
+			pre{
+				position:absolute;
+				top:2rem;
+				left:-20rem;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				body{
+					font-size:1.2rem;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+					background-color:pink;
+				}
+				ol li{
+					font-weight:bold;
+					color:#666;
+				}
+				pre{
+					font-size:1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>Node.js结合babel的使用</h2>
+			<ol>
+				<li>npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/node</li>
+				<li>npm install --save @babel/polyfill</li>
+				<li>项目跟目录创建文件babel.config.js</li>
+				<li>babel.config.js文件内容代码
+					<pre>
+						const presets = {
+							["@babel/env",{
+								targets:{
+									edge:"17",
+									firefox:"60",
+									chrome:"67",
+									safari:"11.1"
+								}
+							}]
+						};
+						module.exports={presets};
+					</pre>
+				</li>
+				<li>
+					通过npx babel-node index.js执行代码
+				</li>
+			</ol>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>ES6模块化的基本语法-直接导入并执行模块代码</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+			    box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1rem;
+				font-family:楷体;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				padding:2rem;
+				margin:2rem auto;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				height:3rem;
+				line-height:3rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+				margin-bottom:1rem;
+			}
+			p{
+				margin-bottom:1rem;
+				border-top:0.05rem solid black;
+				border-bottom:0.05rem solid black;
+				padding:1rem 0;
+			}
+			hr{
+				margin:1rem 0;
+			}
+			pre{
+				border-left:0.05rem solid black;
+				font-size:0.9rem;
+			}
+			strong{
+				color:#f60;
+				font-weight:bold;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+					border:0;
+				}
+				h2{
+					height:4rem;
+					line-height:4rem;
+				}
+				p{
+					font-size:1.2rem;
+				}
+				pre{
+					font-size:1.1rem; 
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>ES6模块化的基本语法-直接导入并执行模块代码</h2>
+			<p>有时候，我们只想<strong>单纯执行某个模块中的代码</strong>,并<strong>不需要得到模块中向外暴露的成员</strong>，此时，可以<strong>直接导入并执行模块代码<</strong>/p>
+			<pre>
+        //当前文件模块为m2.js
+	//在当前模块中执行一个for循环操作
+	for(let i = 0; i < 3; i++){
+		console.log(i);
+	}
+			</pre>
+			<hr>
+			<pre>
+	//直接导入并执行代码
+	import './m2.js'
+			</pre>
+		</div>
+		
+		<script type="module">
+			import './m2.js'
+		</script>
+	</body>
+</html>
