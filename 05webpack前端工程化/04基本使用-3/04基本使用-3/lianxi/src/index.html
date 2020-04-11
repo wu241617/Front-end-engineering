@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>webpack的基本使用-3</title>
+        
+		<script src="/bundle.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>配置html-webpack-plugin生成预览页面</h2>
+			<ul>
+				<li>运行npm install html-webpack-plugin -D命令,安装生成预览页面的插件</li>
+				<li>修改webpack.config.js文件头部区域，添加如下配置信息:
+				<pre>
+	//导入生成预览页面的插件，得到一个构造函数
+	const HtmlWebpackPlugin = require("html-webpack-plugin")
+	//创建插件的实例对象
+	const htmlPlugin = new HtmlWebpackPlugin({
+	//指定要用到的模板文件
+	template:'./src/index.html',
+	//指定生成的文件的名称，该文件存在于内存中，在目录中	不显示
+	filename:'index.html'
+	})
+				</pre></li>
+				<li>
+					修改webpack.config.js文件中向外暴漏的配置对象，新增如下配置节点:
+		       <pre>
+	module.exports = {
+		//plugins数组是webpack打包期间会用到的一些插件列表
+		plugins:[htmlPlugin]
+	}
+			   </pre>
+				</li>
+			</ul>
+			<h2>配置自动打包相关的参数</h2>
+			<p>自动打包完成后，自己在浏览器弹出index.html页面</p>
+			<pre>
+	//package.json中的配置
+	//--open打包完成后自动打开浏览器页面
+	//--host配置IP地址
+	//--port配置端口
+	"scripts":{
+		"dev":"webpack-dev-server --open --host 127.0.0.1 --port 8888"
+	}
+			</pre>
+			<h2>webpack中的加载器</h2>
+			<p>1,通过loader打包非js模块</p>
+			<p>在实际开发过程中,webpack默认只能打包处理以.js后缀名结尾的模块，其他非.js后缀名结尾的模块，webpack默认处理不了,需要调用loader加载器才可以正常打包,否则会报错！</p>
+			<p>loader加载器可以协调webpack打包处理特定的文件模块，比如:</p>
+			<ul>
+				<li>less-loader可以打包处理.less相关的文件</li>
+				<li>sass-loader可以打包.scss相关的文件</li>
+				<li>url-loader可以打包处理css中url路径相关的文件</li>
+			</ul>
+			<h2>webpack中加载器的基本使用</h2>
+			<ul>
+				<li>
+					1,打包处理CSS文件
+					<ol>
+						<li>运行npm i style-lader css-loader -D命令，安装处理css文件的loader</li>
+						<li>在webpack.config.js的module--rules数组中，添加loader规则如下
+						<pre>
+	//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+			{test:/\.css$/,use:['style-loader','css-loader']}
+		]
+	}
+	//其中,test表示匹配的文件类型，use表示对应要调用的loader,
+use数组中指定的loader顺序是固定的；多个loader的调用顺序是:从后往前调用
+						</pre></li>
+					</ol>
+					<li>
+						2,打包处理less文件
+						<ol>
+							<li>运行npm i less-loader less -D命令，安装处理less文件的loader</li>
+							<li>在webpack.config.js的module--rules数组中，添加loader规则如下
+							<pre>
+  //所有第三方文件模块的匹配规则
+  module:{
+  rules:[
+  {test:/\.less$/,use:['style-loader','css-loader','less-loader']}
+  ]
+  }</pre>
+					</li>
+					</ol>
+				</li>
+				<li>
+					3,打包处理scss文件
+				<ol>
+					<li>运行npm i sass-loader node-sass -D命令，安装处理sass文件的loader</li>
+					<li>在webpack.config.js的module--rules数组中，添加loader规则如下
+					<pre>
+	//所有第三方文件模块的匹配规则
+	module:{
+		rules:[
+{test:/\.sass$/,use:['style-loader','css-loader','sass-loader']}
+			]
+	}</pre>
+					</li>
+				</ol>
+				</li>
+				<li>
+					4,配置postCSS自动添加css的兼容前缀
+					<ol>
+						<li>
+							运行npm i postcss-loader autoprefixer -D命令
+						</li>
+						<li>
+							在项目根目录中创建postcss的配置文件postcss.config.js,并初始化如下配置:
+							<pre>
+	//导入自动添加前缀的插件
+	const autoprefixer = require('autoprefixer')
+	module.exports = {
+		plugins:[autoprefixer]//挂载插件
+	}
+							</pre>
+						</li>
+						<li>
+							在webpack.config.js的module--rules数组中，修改css的loader规则如下:
+							<pre>
+	module:{
+		rules:[
+	{test:/\.css$/,use:['style-loader','css-loader','postcss-loader']}
+		]
+	}
+							</pre>
+						</li>
+					</ol>
+				</li>
+				<li>
+					5,打包样式表中的图片和字体文件
+					<ol>
+						<li>
+							运行npm i url-loader file-loader -D命令
+						</li>
+						<li>
+							在webpack.config.js的module--rules数组中，添加loader规则如下:
+							<pre>
+	module:{
+		rules:[
+			{
+test:/\.jpg|png|gif|bmp|ttf|eot|svg|woff|woff2$/,use:'url-loader?limit=16940'
+			}
+		]
+	}
+	//其中?之后是loader的参数项；
+	limit用来指定图片的大小，单位是字节（byte）
+	只有小于limit大小的图片，才会被转为base64图片
+							</pre>
+						</li>
+					</ol>
+				</li>
+				<li>
+					打包处理js文件中的高级语法
+					<ol>
+						<li>
+							安装babel转换器相关的包:npm i babel-loader @babel/core @babel/runtime -D
+						</li>
+						<li>
+							安装babel语法插件相关的包:npm i @babel/preset-env @babel/plugin-transform-runtime @babel/plugin-proposal-class-properties -D
+						</li>
+						<li>
+							在项目根目录中，创建babel配置文件babel.config.js并初始化基本配置如下:
+							<pre>
+	module.exports = {
+	presets:['@babel/preset-env'],
+plugins:['@babel/plugin-transform-runtime','@babel/plugin-proposal-class-properties']
+	}
+							</pre>
+						</li>
+						<li>
+							在webpack.config.js的module--rules数组中，添加loader规则如下:
+							<pre>
+	//exclude为排除项，表示babel-loader不需要处理的node_modules中的js文件
+	{test:/.\js$/,use:'babel-loader',exclude:/node_modules/}
+							</pre>
+						</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

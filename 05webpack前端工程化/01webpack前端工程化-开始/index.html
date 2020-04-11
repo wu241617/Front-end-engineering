@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>webpack前端工程化-开始</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1rem;
+				font-family:楷体;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				border:0.1rem solid black;
+				padding:2rem;
+				margin:2rem auto;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			ul{
+				list-style-position:inside;
+			}
+			ul li{
+				height:2rem;
+				line-height:2rem;
+				cursor:pointer;
+			}
+			ul li:hover{
+				color:red;
+			}
+			h2{
+				height:3rem;
+				line-height:3rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+				margin:1rem 0;
+			}
+			h2:nth-child(1){
+				margin-top:0;
+			}
+			p{
+				margin:1rem 0;
+			}
+			strong{
+				color:#f60;
+				font-weight:bold;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@meida (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				body{
+					font-size:1.5rem;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>当前web开发面临的困境</h2>
+			<ul>
+				<li>文件依赖关系错综复杂</li>
+				<li>静态资源请求效率低</li>
+				<li>模块化支持不友好</li>
+				<li>浏览器对高级JS特性兼容程度较低</li>
+				<li>etc...</li>
+			</ul>
+			<h2>webpack概述</h2>
+			<p>webpack是一个流行的<strong>前端项目构建工具(打包工具)</strong>,可以解决当前web开发中所面临的困境</p>
+			<p>webpack提供了<strong>友好的模块支持，以及代码压缩混淆，处理js兼容问题，性能优化</strong>等强大的功能，从而让程序员把工作的重心放到具体的功能实现上，<strong>提高了开发效率和项目的可维护性</strong></p>
+		</div>
+		
+		<script></script>
+	</body>
+</html>

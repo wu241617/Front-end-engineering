@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>webpack的基本使用-2</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1rem;
+				font-family:楷体;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				padding:2rem;
+				margin:2rem auto;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				height:2.5rem;
+				line-height:2.5rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+				margin-bottom:1rem;
+			}
+			p{
+				margin:1rem 0;
+			}
+			pre{
+				font-size:0.8rem;
+				font-weight:bold;
+				margin:1rem 0;
+				color:#666;
+				border-left:0.05rem solid black;
+			}
+			strong{
+				color:#f60;
+				font-weight:bold;
+			}
+			ol{
+				list-style-position:inside;
+			}
+			ol li{
+				margin:1rem 0;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				body{
+					font-size:1.5rem;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+				}
+				h2{
+					height:4rem;
+					line-height:4rem;
+				}
+				pre{
+					font-size:1rem;
+				}
+			}
+		</style>
+		<script src="/bundle.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>配置打包的入口与出口</h2>
+			<p>webpack的4.x版本中<strong>默认约定:</strong></p>
+			<p><strong>打包的入口文件</strong>为 src -- index.js</p>
+			<p><strong>打包的输出文件</strong>为 dist -- main.js</p>
+			<hr>
+			<p>如果要<strong>修改打包的入口与出口</strong>，可以在webpack.config.js中<strong>新增如下配置信息:</strong></p>
+			<pre>
+    //导入node.js中专门操作路径的模块
+    const path = require('path')
+
+    //__dirname项目根目录(双下划线)
+    module.exports = {
+	
+	//打包入口文件的路径
+	entry:path.join(__dirname,'/src/index.js'),
+	
+	output:{
+		//输入文件的存放路径
+		path:path,join(__dirname,'./dist'),
+		
+		//输出文件的名称
+		filename:'bundle.js'
+	  }
+    }
+			</pre>
+			<h2>配置webpack的自动打包功能</h2>
+			<ol>
+				<li>运行npm install webpack-dev-server -D命令,安装支持项目自动打包的工具</li>
+				<li>修改 package.json -- scripts中的dev命令如下
+				<pre>
+    "script":{
+	    //script节点下的脚本，可以通过npm run执行
+	    "dev:"webpack-dev-server
+    }
+				</pre></li>
+				<li>将src -- index.html中，script脚本的引用路径，修改为"/buldle.js</li>
+				<li>运行 npm run dev命令，重新进行打包</li>
+				<li>
+					在浏览器中访问，查看自动打包效果
+				</li>
+			</ol>
+			<p><strong>注意:</strong>webpack-dev-server会启动一个实时打包的http服务器</p>
+			<p><strong>注意:</strong>webpack-dev-server打包生成的输出文件，默认放在项目根目录中，而且是虚拟的，看不见的</p>
+		</div>
+	</body>
+</html>
