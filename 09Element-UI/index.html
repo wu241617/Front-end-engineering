@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalabel=no,viewport-fit=cover">
+		<title>Element-UI的基本使用</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1rem;
+				font-family:楷体;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				margin:2rem auto;
+				padding:2rem;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				font-size:1.4rem;
+				height:2.5rem;
+				line-height:2.5rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+			}
+			p{
+				margin:1rem 0;
+			}
+			ul{
+				list-style-position:inside;
+			}
+			ul li{
+				margin:1rem 0;
+			}
+			pre{
+				color:#666;
+				font-size:0.8rem;
+				margin-top:1rem;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>Element-UI的基本使用</h2>
+			<p>Element-UI:一套为开发者，设计师和产品经理准备的基于Vue 2.0的桌面端组件库。官网地址为:http://element-cn.eleme.io/#/zh-CN</p>
+			<ul>
+				<li>1,基于命令行方式手动安装</li>
+				<li>安装依赖包npm i element-ui -S</li>
+				<li>导入Element-UI相关资源
+			    <pre>
+	//导入组件库
+	import ElementUI from 'element-ui';
+	//导入组件相关样式
+	import 'element-ui/lib/theme-chalk/index.css';
+	//配置Vue插件
+	Vue.use(ElementUI);
+				</pre>	
+				</li>
+				<li>2,基于图形化界面自动安装
+				<ol>
+					<li>运行vue ui命令，打开图形化界面</li>
+					<li>通过Vue项目管理器，进入具体的项目配置面板</li>
+					<li>
+						点击插件--添加插件，进行插件查询面板
+					</li>
+					<li>搜索vue-cli-plugin-element并安装</li>
+					<li>配置插件，实现按需导入，从而减少打包后项目的体积</li>
+				</ol>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

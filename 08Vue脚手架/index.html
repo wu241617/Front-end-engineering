@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalabel=no,viewport-fit=cover">
+		<title>Vue脚手架的基本用法</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1rem;
+				font-family:楷体;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				border:0.1rem solid black;
+				margin:2rem auto;
+				padding:2rem;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				height:2.5rem;
+				line-height:2.5rem;
+				background-color:black;
+				color:white;
+				text-align:center;
+			}
+			p{
+				margin:1rem 0;
+			}
+			ul,ol{
+				list-style-position:inside;
+			}
+			ul li,ol li{
+				margin:1rem 0;
+			}
+			pre{
+				margin-top:0.5rem;
+				color:#f60;
+				font-size:0.8rem;
+			}
+			strong{
+				color:#f60;
+				font-weight:normal;
+			}
+		</style>
+		<style>
+			@media (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@media (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				body{
+					font-size:1.5rem;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+					border:0;
+				}
+				h2{
+					height:4rem;
+					line-height:4rem;
+				}
+				pre{
+					font-size:1.2rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>Vue脚手架的基本用法</h2>
+			<p>Vue脚手架用于快速生成Vue项目基础架构，其官网地址为:https://cli.vuejs.org/zh/</p>
+			<ul>
+				<li>使用步骤--运行: npm run serve</li>
+				<li>1,安装3.x版本的Vue脚手架 <strong>npm install -g @vue/cli</strong></li>
+				<li>
+					基于3.x版本的脚手架创建vue项目
+				    <ol>
+						<li>
+							基于交互命令行的方式，创建新版vue项目 
+							<pre>
+	vue create my-project
+							</pre>
+						</li>
+						<li>
+							基于图形化界面的方式，创建新版vue项目
+							<pre>
+	 vue ui
+							</pre>
+						</li>
+						<li>
+							基于2.x的旧模板，创建旧版的vue项目 
+						<pre>
+	npm install -g @vue/cli-init
+	vue init webpack my-project
+						</pre>
+						</li>
+					</ol>
+				</li>
+				<li>
+					Vue脚手架生成的项目结构分析
+					<ol>
+						<li>node_modules---依赖包目录</li>
+						<li>public---静态资源目录</li>
+						<li>src---组件源码目录</li>
+						<li>babel.config.js---Babel配置文件</li>
+					</ol>
+				</li>
+				<li>Vue脚手架的自定义配置</li>
+				<li>1,通过package.json配置项目</li>
+				<pre>
+	//必须是符合规范的json语法
+	"vue":{
+		"devServer":{
+			"port":8888,
+			"open":true
+		}
+	}
+	//注意:不推荐使用这种配置方式，因为package.json主要用来管理包的，
+配置信息；为了方便维护，推荐将vue脚手架相关的配置，
+单独定义到vue.config.js配置文件中
+				</pre>
+				<li>2,单独配置文件配置项目
+					<ol>
+						<li>在项目的根目录创建文件vue.config.js</li>
+						<li>在该文件中进行相关配置，从而覆盖默认配置
+						<pre>
+	//vue.config.js
+	module.exports = {
+		devServer:{
+			port:8888,
+			open:true
+		}
+	}
+						</pre></li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

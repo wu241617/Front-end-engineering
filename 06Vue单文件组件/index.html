@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+		<title>Vue单文件组件</title>
+		<style type="text/css">
+			*{
+				margin:0;
+				padding:0;
+				box-sizing:border-box;
+			}
+			html,body{
+				height:100%;
+				width:100%;
+			}
+			body{
+				font-size:1.2rem;
+				font-family:华文楷体;
+			}
+			#app{
+				width:40rem;
+				min-height:20rem;
+				margin:2rem auto;
+				padding:2rem;
+				border:0.1rem solid black;
+				box-shadow:0.5rem 1rem 1rem 0.5rem gray;
+			}
+			h2{
+				height:2.5rem;
+				line-height:2.5rem;
+				text-align:center;
+				background-color:black;
+				color:white;
+			}
+			strong{
+				color:#f60;
+				font-weight:bold;
+			}
+			ul,ol{
+				list-style-position:inside;
+			}
+			ul li,ol li{
+				margin:1rem 0;
+			}
+		</style>
+		<style>
+			@meida (min-width:1000px) {
+				html{
+					font-size:20px;
+				}
+			}
+			@meida (min-width:500px) and (max-width:1000px) {
+				html{
+					font-size:16px;
+				}
+			}
+			@media (max-width:500px) {
+				html{
+					font-size:12px;
+				}
+				body{
+					font-size:1.4rem;
+				}
+				#app{
+					width:auto;
+					height:auto;
+					margin:0;
+					border:0;
+				}
+				h2{
+					height:4rem;
+					line-height:4rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<h2>传统组件的问题和解决方案</h2>
+			<ul>
+				<li>全局定义的组件必须保证组件名不重复</li>
+				<li>字符串模板缺乏语法高亮，在HTML有多行的时候，需要用到丑陋的\</li>
+				<li>不支持CSS意味着当HTML和Javascript组件化时,CSS明显被遗漏</li>
+				<li>没有构建步骤限制，只能使用HTML和ES5 Javascript,而不能使用预处理器（如Babel）</li>
+				<li>针对传统组件的问题,Vue提供了一个解决方案--- <strong>使用单文件组件</strong></li>
+			</ul>
+			<h2>单文件组件的基本用法</h2>
+			<ul>
+				<li>
+					单文件组件的<strong>组成结构</strong>
+					<ol>
+						<li>template---组件的模板区域</li>
+						<li>script---业务逻辑区域</li>
+						<li>style---样式区域</li>
+					</ol>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>
